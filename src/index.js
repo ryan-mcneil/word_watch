@@ -21,7 +21,9 @@ const getTopUser = () => {
 
 const breakdown= () => {
   let text = $('#input-text').val();
-  let words = text.split(" ")
+  let noPunct = text.replace(/[^\w\s]|_/g, "")
+  let noExtraSpace = noPunct.replace(/\s+/g, " ")
+  let words = noExtraSpace.split(" ");
 
   words.forEach( word => postWord(word) );
 
