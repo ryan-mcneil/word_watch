@@ -21,13 +21,16 @@ const getTopUser = () => {
 
 const breakdown= () => {
   let text = $('#input-text').val();
-  let noPunct = text.replace(/[^\w\s]|_/g, "")
-  let noExtraSpace = noPunct.replace(/\s+/g, " ")
-  let words = noExtraSpace.split(" ");
+  if (text) {
+    let noPunct = text.replace(/[^\w\s]|_/g, "")
+    let noExtraSpace = noPunct.replace(/\s+/g, " ")
+    let words = noExtraSpace.split(" ");
 
-  words.forEach( word => postWord(word) );
+    words.forEach( word => postWord(word) );
 
-  $('#input-text').val("")
+    $('#input-text').val("")
+    notify();
+  }
 }
 
 const postWord= (word) => {
@@ -43,4 +46,12 @@ const postWord= (word) => {
   })
   .then( getTopUser() )
   .catch( error => console.log(error));
+}
+
+const notify= () => {
+  $('button').text("Success!");
+  setTimeout( () => {
+    $('button').text("Break down");
+  }, 2000);
+
 }
