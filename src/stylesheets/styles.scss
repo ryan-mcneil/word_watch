@@ -81,6 +81,9 @@ main {
       height: 8vh;
       color: $salmon;
       padding: 10px;
+      span {
+        color: $indigo
+      }
     }
     .word-count {
       display: flex;
