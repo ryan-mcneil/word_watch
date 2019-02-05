@@ -2,6 +2,9 @@ import $ from 'jquery'
 
 $(document).ready(() => {
   getTopUser();
+  $('button').click( () => breakdown() );
+
+
 })
 
 const getTopUser = () => {
@@ -14,4 +17,15 @@ const getTopUser = () => {
     $(".top-word h3").text(`Top word from Word Watch API: ${word}`);
     $("#word-count").text(`Count: ${count}`)
   })
+}
+
+const breakdown= () => {
+  console.log("hi");
+  let words = $('#input-text').value.split(" ");
+
+  words.foreach( word => postWord(word) );
+}
+
+const postWord= () => {
+  
 }
