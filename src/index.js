@@ -20,12 +20,25 @@ const getTopUser = () => {
 }
 
 const breakdown= () => {
-  console.log("hi");
-  let words = $('#input-text').value.split(" ");
+  let text = $('#input-text').val();
+  let words = text.split(" ")
 
-  words.foreach( word => postWord(word) );
+  words.forEach( word => postWord(word) );
+
+  $('#input-text').val("")
 }
 
-const postWord= () => {
-  
+const postWord= (word) => {
+  let url = 'https://wordwatch-api.herokuapp.com/api/v1/words';
+  fetch(url, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      word: {
+        value: word
+      }
+    })
+  })
+  .then( getTopUser() )
+  .catch( error => console.log(error));
 }
