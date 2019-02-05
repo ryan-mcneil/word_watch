@@ -14,7 +14,7 @@ const getTopUser = () => {
   .then( data => {
     let word = Object.keys(data["word"])[0];
     let count = data["word"][word];
-    $(".top-word h3").text(`Top word from Word Watch API: ${word}`);
+    $("#top-word").text(word);
     $("#word-count").text(`Count: ${count}`)
   })
 }
